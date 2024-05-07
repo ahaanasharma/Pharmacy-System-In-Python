@@ -1,0 +1,302 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from prettytable import PrettyTable
+from tabulate import tabulate
+
+#INTRODUCTION
+text =('WELCOME TO EASYMEDS')
+x=text.center(140)
+print(x)
+
+#USER DETAILS
+first_name=input("Enter your first name:")
+last_name=input("Enter your last name:")
+print('HEllO',first_name,last_name)
+
+#DATA SOURCE
+table=pd.read_csv("source1.csv", names=['NAME','TYPE','DOSAGE(mg)','AVAIL','PRICE(PER ITEM)'])
+print(' \n DOUBLE CLICK HERE TO VIEW THE DATA SET OR RIGHT CLICK ON THE BOX AND SELECT VIEW: \n', tabulate(table,headers='firstrow',tablefmt='fancy_grid'))
+
+#MENU
+while True:  
+    print("\n\tMAIN MENU:")  
+    print("1. List of medicines")  
+    print("2. Categories")  
+    print("3. Dosage")
+    print("4.Bar graph of number of medicines in various categories")
+    print("5.Line Chart of medicines according to their type")
+    print("6. Bar graph of medicines according to their available quantity")
+    print("7. Extract first 5 rows from the data set:")
+    print("8.Exract last 5 rows from the datat set")
+    print("9.Medicine with maximum availability")
+    print("10.Sum of medicine availability")
+    print("11.Medicine with minimum availability")
+    print("12.Sort data in ascending order by NAMES")
+    print("13.Sort data in descending order by NAME")
+    print("14.Shape of the data set")
+    print("15.Size of the data set")
+    print("16.Dimension of Data Set")
+    print("17.Bar graph of number of medicines with their pricings")
+    print("18.Columns of the Data Set")
+    print("19.Insert  a row")
+    print("20.Delete a row")
+    print("21.Delete a column")
+    print("22. Updating Cell value")
+    print("23.Pie Chart(Type Of Medicines)")
+    print("24.Bill Generation")
+    print("25. Histogram(PRICE)")
+    print("26.SHOW DATA SET")
+    print("27.EXIT")
+
+#INPUT
+    choice1 = int(input("Enter your Choice: "))
+    choice1==input()
+
+
+#CHOICE
+#MEDICINE NAMES
+    if choice1 == 1:
+        print("List of medicines are as follows: ")
+        print(table['NAME'])
+  
+
+#CATEGORIES
+    elif choice1==2:
+         data=pd.read_csv("quantity.csv", usecols=['CATEGORIES', 'NUMBER OF MEDICINES'])
+         print(' \n THE TABLE SHOWS THE CATEGORIES AND NUMBER OF MEDICINES: \n', tabulate(data,headers='firstrow',tablefmt='fancy_grid'))
+
+#MEDICINE LIST
+    elif choice1==3:
+       print("List of medicines are as follows:")
+       table=pd.read_csv("source1.csv", usecols=['NAME', 'DOSAGE(mg)'])
+       print(" \n THE TABLE SHOWS THE DOSAGE OF THE MEDICINES, CLICK TO ACCESS THE DATA: \n",tabulate(table,headers='firstrow',tablefmt='grid'))
+
+#HORIZONTAL BAR GRAPH(DOSAGE)
+    elif choice1==4:
+       print("Bar graph of number of medicines in various categories:")
+       data = pd.read_csv('source1.csv')
+       df =pd.DataFrame(data)
+       X =(table['NAME'])
+       Y =(table['DOSAGE(mg)'])
+       plt.barh(X, Y, color='#CD3333')
+       plt.title("MEDICINES ACCORDING TO DOSAGE:")
+       plt.xlabel("DOSAGE")
+       plt.ylabel("NAMES OF MEDICINES")
+       plt.show()
+
+#BAR GRAPH(TYPE)
+    elif choice1==5:
+       print("Bar graph of number of medicines in various categories:")
+       X = (['RECTAL SOLUTION','ORAL LIQUID','TABLET','INJECTION'])
+       Y = ([2,9,15,14])
+       plt.plot(X, Y, color='#CD1076', marker='*')
+       plt.title("MEDICINES ACCORDING TO DOSAGE:")
+       plt.xlabel("NAMES OF MEDICINES")
+       plt.ylabel("DOSAGE")
+       plt.show()
+
+#BAR GRAPH(AVAILABILITY)    
+    elif choice1==6:
+       print("Bar Graph:")
+       table=pd.read_csv("source1.csv", names=['NAME','TYPE','DOSAGE(mg)','AVAIL ','PRICE(PER ITEM)'])
+       df = pd.DataFrame(table)
+       X = list(df.iloc[:, 3])
+       Y = list(df.iloc[:, 0])
+       plt.bar(X, Y, color='#007474')
+       plt.title("AVAILABILITY")
+       plt.xlabel("AVAILABILITY")
+       plt.ylabel("MEDICINE NAME")
+       plt.show()
+
+#USE OF HEAD () FUNCTION
+    elif choice1==7:
+        table=pd.read_csv("source1.csv")
+        print('FIRST FIVE ROWS:',table.head(5))
+
+#USE OF TAIL() FUNCTION
+    elif choice1==8:
+        table=pd.read_csv("source1.csv")
+        print('LAST FIVE ROWS:',table.tail(5))
+
+#USE OF MAX() FUNCTION
+    elif choice1==9:
+        table=pd.read_csv("source1.csv")
+        print('MAX AVAILABILITY:',table.max())
+
+#USE OF SUM() FUNCTION
+    elif choice1==10:
+        table=pd.read_csv("source1.csv")
+        print("Sum of medicine availability:",table['AVAIL'].sum())
+
+#USE OF MIN() FUNCTION
+    elif choice1==11:
+        table=pd.read_csv("source1.csv")
+        print("Medicine with minimum availability",table.min())
+
+#SORTING DATA(ASCENDING ORDER)
+    elif choice1==12:
+        table=pd.read_csv("source1.csv")
+        x=table.sort_values(by=['NAME'],ascending=True,ignore_index=True)
+        print("CLICK TO VIEW THE DATA:",tabulate(x,headers='firstrow',tablefmt='grid'))
+
+#SORTING DATA(DESCENDING ORDER)
+    elif choice1==13:
+        table=pd.read_csv("source1.csv")
+        x=table.sort_values(by=['NAME'],ascending=False,ignore_index=True)
+        print("CLICK TO VIEW THE DATA:",tabulate(x,headers='firstrow',tablefmt='grid'))
+
+#SHAPE OF DATASET
+    elif choice1==14:
+        table=pd.read_csv("source1.csv")
+        print('Shape of Data Set:',table.shape)
+
+#SIZE OF DATASET
+    elif choice1==15:
+        table=pd.read_csv("source1.csv")
+        print('Size of Data Set:',table.size)
+
+#DIMENSION OF DATASET
+    elif choice1==16:
+        table=pd.read_csv("source1.csv")
+        print("Dimension of existing data set:",table.ndim,"D")
+
+#BAR GRAPH(PRICE)
+    elif choice1==17:
+       print("Bar graph of number of medicines with their pricings:")
+       data = pd.read_csv('source1.csv')
+       df =pd.DataFrame(data)
+       X =(table['NAME'])
+       Y =(table['PRICE(PER ITEM)'])
+       plt.barh(X, Y, color='#388E8E')
+       plt.title("MEDICINES ACCORDING TO DOSAGE:")
+       plt.xlabel("PRICE(PER ITEM)")
+       plt.ylabel("NAMES OF MEDICINES")
+       plt.show()
+
+#COLUMNS OF DATASET
+    elif choice1==18:
+        table=pd.read_csv("source1.csv", names=['NAME','TYPE','DOSAGE(mg)','AVAIL','PRICE(PER ITEM)'])
+        print(table.columns)
+
+#ROW INSERTION
+    elif choice1==19:
+        df=pd.read_csv("source1.csv")
+        df1=pd.DataFrame()
+        col=df.columns
+        print(col)
+        print(df.head(1))
+        j=0
+        lst=[]
+        lst1=eval(input("Enter a list of values in the sequence of columns: "))
+        print(lst1)
+        s1=pd.Series(lst1,index=df.columns)
+        df1=df.append(s1,ignore_index=True)
+        print("New row inserted")
+        print(" RIGHT CLICK TO ACCESS THE UPDATED DATA: \n",tabulate(df1,headers='firstrow',tablefmt='grid'))
+        df1.to_csv("source1.csv",index=False)
+        df=pd.read_csv("source1.csv")
+        
+#ROW DELETION
+    elif choice1==20:
+        table=pd.read_csv("source1.csv", names=['NAME','TYPE','DOSAGE(mg)','AVAIL','PRICE(PER ITEM)'])
+        print("List of medicines-\n",table['NAME'])
+        n=int(input("Enter the index number of the State for row deletion :"))
+        ch=input("Do you really want to delete row of-\n"+str(table[(table.index==n)])+"(y/n)?")
+        if ch=='y' or ch=='Y':
+            table.drop(index=n,inplace=True)
+            print(" RIGHT CLICK TO ACCESS THE UPDATED DATA: \n",tabulate(table,headers='firstrow',tablefmt='grid'))
+            print("Row of index no- ",n,"deleted successfully!!!")
+            table.to_csv("source1.csv",index=False)
+           
+#COLUMN DELETION   
+    elif choice1==21:
+         print(table.columns)
+         col=input("Enter column name to be deleted from the above")
+         ch=input("Do you really want to delete column(y/n)?")
+         if ch=='y' or ch=='Y':
+             del table[col]
+             print("Column- ",col,"deleted successfully!!!")
+             print(" RIGHT CLICK TO ACCESS THE UPDATED DATA: \n",tabulate(table,headers='firstrow',tablefmt='grid'))
+             table.to_csv("source1.csv",index=False)
+
+#UPDATING CELL VALUES
+    elif choice1==22:
+         df=pd.read_csv("source1.csv", names=['NAME','TYPE','DOSAGE(mg)','AVAIL','PRICE(PER ITEM)'])
+         print(' \n DOUBLE CLICK HERE TO VIEW THE DATA SET OR RIGHT CLICK ON THE BOX AND SELECT VIEW: \n', tabulate(df,tablefmt='fancy_grid'))
+         row_idx=int(input("Enter row index/label for edit : "))
+         col_idx=input("Enter column index/label for edit : ")
+         x=df.loc[row_idx,col_idx]
+         ch=input("Do you really want to overwrite the value"+str(x)+" column(y/n)? ")
+         if ch=='y' or ch=='Y':
+             val=eval(input("Enter new value : "))
+             df.loc[row_idx,col_idx]=val
+             print("Value overwritten Successfully!!!")
+             print(" RIGHT CLICK TO ACCESS THE UPDATED DATA: \n",tabulate(df,headers='firstrow',tablefmt='grid'))
+             df.to_csv("source1.csv",index=False)
+             df=pd.read_csv("source1.csv")
+
+#PIE CHART
+    elif choice1==23:
+        Type = ['RECTAL SOLUTION','TABLET','INJECTION','ORAL LIQUID']
+        data = [2,15,14,9]
+        fig = plt.figure(figsize =(10, 7))
+        plt.pie(data, labels = Type)
+        plt.show()
+
+#BILL PAYMENTS                
+    elif choice1==24:
+        user=1009
+        iuser=int(input('Enter employee ID:'))
+        if (user==iuser):
+            print('ACCESS GRANTED :)')
+            table=pd.read_csv("source1.csv", names=['NAME','TYPE','DOSAGE(mg)','AVAIL','PRICE(PER ITEM)'])
+            print(' \n DOUBLE CLICK HERE TO VIEW THE DATA SET OR RIGHT CLICK ON THE BOX AND SELECT VIEW: \n', tabulate(table,headers='firstrow',tablefmt='fancy_grid'))
+        else:
+             print('ACCESS DENIED :(')
+        cust_name=input('Enter Customer Name:')
+        age=int(input('Enter age:'))
+        gen=input('Enter gender:')
+        table = PrettyTable(['NAME', 'PRICE(PER ITEM)'])
+        total = 0
+        while(1):
+            name = input('Enter Item name:')
+            if(name != 'q'):
+                price = int(input('Enter the Price:'))
+                quantity=int(input('Enter the quantity:'))
+                total += price*quantity
+                table.add_row([name, price])
+                continue
+            elif(price != 'q'):
+                break
+        print('**********************************EASYMEDS**************************************')
+        print('**********************************PAYMENT***************************************')
+        print('NAME:',cust_name)
+        print('AGE:',age)
+        print('GENDER',gen)
+        table.add_row(['TOTAL', total])
+        print(table)
+        print('\nThanks for shopping with us :)')
+        print('Your total bill amount is ',total,'/-')
+        print('**********************************EASYMEDS**************************************')
+        print('**********************************PAYMENT***************************************')
+
+#HISTOGRAM(PRICE)
+    elif choice1==25:
+        df=pd.read_csv('source1.csv')
+        new_df=df["PRICE(PER ITEM)"].sort_values()
+        plt.hist(new_df,bins=40,color='cyan',edgecolor='black')
+        plt.title('AVAILABILITY')
+        plt.show()
+
+    elif choice1==26:
+        table=pd.read_csv("source1.csv", names=['NAME','TYPE','DOSAGE(mg)','AVAIL','PRICE(PER ITEM)'])
+        print(' \n DOUBLE CLICK HERE TO VIEW THE DATA SET OR RIGHT CLICK ON THE BOX AND SELECT VIEW: \n')
+        print("The Data Set is as follows:",tabulate(table,headers='firstrow',tablefmt='fancy_grid'))
+
+    elif choice1==27:
+         print('HAVE A NICE DAY!!!!!!')
+         break
+
+    else:
+      print('OOPS!! PLEASE ENTER A CHOICE')
