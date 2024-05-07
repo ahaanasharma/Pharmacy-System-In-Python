@@ -1,0 +1,41 @@
+NAME,TYPE,DOSAGE(mg),AVAIL,PRICE(PER ITEM)
+Atropine,Injection,1,56,150
+Lamotrigine,Tablet,2,23,200
+Lorazepam,Injection,2,45,70
+Lactulose,Oral liquid,3.7,11,100
+Dexamethasone,Injection,4,21,120
+Dexamethasone,Injection,4,27,65
+Haloperidol,Injection,5,2,85
+Metoclopramide,Oral liquid,5,3,275
+Clopidogrel,Tablet,5,5,45
+Amlodipine,Tablet,5,16,30
+Diazepam,Rectal solution,10,7,60
+Furosemide,Injection,10,10,76
+Morphine,Injection,10,20,60
+Loratadine,Tablet,10,21,80
+Methimazole,Tablet,10,22,20
+Methylthioninium chloride,Injection,10,30,60
+Methadone,Oral liquid,10,35,75
+Hyoscine butylbromide,Injection,20,12,86
+Fluoxetine,Tablet,20,34,20
+Prednisolone,Tablet,25,12,32
+Phenytoin,Oral liquid,30,33,58
+Codeine,Tablet,30,45,65
+Dopamine,Injection,40,14,78
+Amiodarone,Injection,50,2,85
+Hydrochlorothiazide,Oral liquid,50,10,90
+Cyclizine,Injection,50,12,120
+Docusate sodium,Oral liquid,50,19,110
+Amitriptyline,Tablet,75,11,20
+Mebendazole,Tablet,100,17,60
+Artesunate,Rectal solution,100,18,125
+Lugol's solution,Oral liquid,130,57,86
+Acetylcysteine,Injection,200,6,92
+Carbamazepine,Tablet,200,9,110
+Ibuprofen,Oral liquid,200,80,120
+Valproic acid,Oral liquid,200,15,130
+Digoxin,Injection,250,21,85
+Albendazole,Tablet,400,31,82
+Paracetamol,Tablet,500,15,65
+Acetylsalicylic acid,Tablet,500,23,30
+Metformin,tablet,500,50,77
